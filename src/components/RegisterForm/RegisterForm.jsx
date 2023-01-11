@@ -45,8 +45,11 @@ export const RegisterForm = () => {
       return toast.error("Passwords didn't match. Please try again");
     }
     dispatch(register({
-      name
+      name: name.trim(),
+      email: email.trim(),
+      password: password.trim()
     }))
+    resetForm();
   };
 
   function resetForm() {
@@ -107,9 +110,14 @@ export const RegisterForm = () => {
           required
           fullWidth
           name="password"
-          label="Password"
+          label="Password (seven or more characters )"
           type="password"
           id="password"
+          
+          inputProps={{
+            pattern: ".{7,}",
+            title:'seven or more characters'
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

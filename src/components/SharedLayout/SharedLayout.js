@@ -1,4 +1,6 @@
+import { useAuth } from 'hooks/useAuth';
 import { AuthNav } from 'components/AuthNav/AuthNav';
+import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -8,26 +10,19 @@ import {
   Header,
   Logo,
   LogoBlack,
-  StyledLink,
 } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
-
+const {isLoggedIn} = useAuth();
   return (
     <>
       <Container>
         <Header>
-          <nav>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/contacts">Contacts</StyledLink>
-          </nav>
-
+          <Navigation/>
           <Logo>
             Phone<LogoBlack>book</LogoBlack>
           </Logo>
-
-          <AuthNav />
-          {/* <UserMenu /> */}
+          {isLoggedIn ? <UserMenu/> : <AuthNav/>}
 
         </Header>
         <Suspense fallback={<p>Loading...</p>}>
