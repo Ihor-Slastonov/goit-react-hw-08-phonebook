@@ -46,7 +46,7 @@ export const RegisterForm = () => {
     }
     dispatch(register({
       name: name.trim(),
-      email: email.trim(),
+      email: email.toLowerCase().trim(),
       password: password.trim()
     }))
     resetForm();
