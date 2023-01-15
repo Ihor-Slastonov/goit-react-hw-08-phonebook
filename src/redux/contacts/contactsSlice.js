@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/operations';
 import { fetchContacts, addContact, deleteContact } from './operations';
+import { toast } from 'react-hot-toast';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -45,6 +46,7 @@ const contactsSlice = createSlice({
         contact => contact.id === action.payload.id
       );
       state.contacts.splice(index, 1);
+      toast.error("Contact deleted")
     },
     [deleteContact.rejected]: handleRejected,
     [logOut.fulfilled](state) {
