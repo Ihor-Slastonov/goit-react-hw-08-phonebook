@@ -22,7 +22,7 @@ export const Home = () => {
           <b>
             <Link to="/register">create</Link>
           </b>
-          an account, it will not take much time, but you will be sure that you
+           an account, it will not take much time, but you will be sure that you
           already have access to them!
         </Text>
       </Stack>
