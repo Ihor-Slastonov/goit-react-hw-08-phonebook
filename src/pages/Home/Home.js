@@ -18,11 +18,7 @@ export const Home = () => {
         <Image name="home.jpg" alt="A man looks at his laptop " w="300" />
         <Text>
           This app allows you to be always close to your contacts. To start
-          using it right now, just 
-          <b>
-            <Link to="/register">create</Link>
-          </b>&nbsp
-          an account, it will not take much time, but you will be sure that you
+          using it right now, just <b><Link to="/register">create</Link></b> an account, it will not take much time, but you will be sure that you
           already have access to them!
         </Text>
       </Stack>
