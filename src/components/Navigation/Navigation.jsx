@@ -2,7 +2,7 @@ import { useAuth } from 'hooks/useAuth';
 import { StyledLink } from 'components/SharedLayout/SharedLayout.styled';
 
 export const Navigation = () => {
-  const {isLoggedIn} = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <nav>

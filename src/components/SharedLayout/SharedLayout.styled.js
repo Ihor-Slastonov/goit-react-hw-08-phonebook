@@ -5,7 +5,6 @@ export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-  outline: 1px solid tomato;
 `;
 
 export const Header = styled.header`
@@ -20,9 +19,11 @@ export const Header = styled.header`
   background: #1363df;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 
-  > nav, >div {
+  > nav,
+  > div {
     display: flex;
     gap: 10px;
+    align-items: center;
   }
 `;
 
@@ -34,6 +35,9 @@ export const StyledLink = styled(NavLink)`
   font-size: 20px;
   line-height: 1.15;
   color: #dff6ff;
+  transition: border 250ms linear, box-shadow 250ms linear,
+    background 250ms linear;
+
   &.active {
     font-weight: 700;
     color: white;
@@ -45,7 +49,6 @@ export const StyledLink = styled(NavLink)`
   :hover:not(.active),
   :focus:not(.active) {
     border: 1px solid #dff6ff;
-    border-radius: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -59,5 +62,5 @@ export const Logo = styled.p`
   margin-right: auto;
 `;
 export const LogoBlack = styled.span`
-  color: #06283D;
+  color: #06283d;
 `;

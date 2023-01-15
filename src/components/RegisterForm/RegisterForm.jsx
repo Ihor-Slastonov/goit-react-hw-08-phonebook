@@ -44,11 +44,13 @@ export const RegisterForm = () => {
     if (password.toLowerCase() !== passwordConfirm.toLowerCase()) {
       return toast.error("Passwords didn't match. Please try again");
     }
-    dispatch(register({
-      name: name.trim(),
-      email: email.toLowerCase().trim(),
-      password: password.trim()
-    }))
+    dispatch(
+      register({
+        name: name.trim(),
+        email: email.toLowerCase().trim(),
+        password: password.trim(),
+      })
+    );
     resetForm();
   };
 
@@ -64,7 +66,7 @@ export const RegisterForm = () => {
       <Box
         component="form"
         sx={{ maxWidth: '400px', margin: '0 auto' }}
-        autoComplete="off"
+        autoComplete="on"
         onSubmit={onFormSubmit}
       >
         <TextField
@@ -113,10 +115,9 @@ export const RegisterForm = () => {
           label="Password (seven or more characters )"
           type="password"
           id="password"
-          
           inputProps={{
-            pattern: ".{7,}",
-            title:'seven or more characters'
+            pattern: '.{7,}',
+            title: 'seven or more characters',
           }}
           InputProps={{
             startAdornment: (

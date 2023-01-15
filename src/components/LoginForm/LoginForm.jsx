@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from 'redux/auth/operations';
+import { logIn } from 'redux/auth/operations';
 
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
@@ -30,12 +30,14 @@ export const LoginForm = () => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    dispatch(login({
-      email: email.trim(),
-      password: password.trim()
-    }))
-    setEmail('')
-    setPassword('')
+    dispatch(
+      logIn({
+        email: email.trim(),
+        password: password.trim(),
+      })
+    );
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -43,7 +45,7 @@ export const LoginForm = () => {
       <Box
         component="form"
         sx={{ maxWidth: '400px', margin: '0 auto' }}
-        autoComplete="off"
+        autoComplete="on"
         onSubmit={onFormSubmit}
       >
         <TextField
@@ -55,10 +57,6 @@ export const LoginForm = () => {
           id="email"
           label="Email Address"
           name="email"
-          inputProps={{
-            pattern: ".{7,}",
-            title:'seven or more characters'
-          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -77,6 +75,10 @@ export const LoginForm = () => {
           label="Password"
           type="password"
           id="password"
+          inputProps={{
+            pattern: '.{7,}',
+            title: 'seven or more characters',
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -85,12 +87,7 @@ export const LoginForm = () => {
             ),
           }}
         />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
           Submit
         </Button>
       </Box>

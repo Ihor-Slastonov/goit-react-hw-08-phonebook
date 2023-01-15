@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-export const Title = styled.h1`
+export const Text = styled.p`
   font-family: 'Handlee', cursive;
   font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px;
 `;

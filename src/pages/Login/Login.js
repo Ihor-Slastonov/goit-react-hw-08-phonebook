@@ -1,7 +1,6 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { Title } from './Login.styled';
 
-
 export const Login = () => {
   return (
     <main>
@@ -11,4 +10,4 @@ export const Login = () => {
   );
 };
 
-export default Login
+export default Login;

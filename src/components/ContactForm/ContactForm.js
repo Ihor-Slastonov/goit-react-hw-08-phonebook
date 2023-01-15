@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { Button } from '@mui/material';
@@ -6,12 +9,35 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import { Title } from './ContactForm.styled';
 
-export const ContactForm = () => {
-  const onSubmit = e => {
-    e.preventDefault();
+export const ContactForm = ({ onSubmit }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-    e.currentTarget.reset()
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        return;
+    }
   };
+
+  const onFormSubmit = e => {
+    e.preventDefault();
+    onSubmit(name, number);
+    resetForm();
+  };
+
+  function resetForm() {
+    setName('');
+    setNumber('');
+    return;
+  }
 
   return (
     <>
@@ -20,10 +46,12 @@ export const ContactForm = () => {
         autoComplete="off"
         maxWidth="600px"
         sx={{ margin: '0 auto' }}
-        onSubmit={onSubmit}
+        onSubmit={onFormSubmit}
       >
         <Title>Create new contact</Title>
         <TextField
+          onChange={onInputChange}
+          value={name}
           type="text"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           size="small"
@@ -46,7 +74,8 @@ export const ContactForm = () => {
           }}
         />
         <TextField
-          // type="number"
+          onChange={onInputChange}
+          value={number}
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           size="small"
           margin="normal"
@@ -75,4 +104,8 @@ export const ContactForm = () => {
       </Box>
     </>
   );
+};
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
