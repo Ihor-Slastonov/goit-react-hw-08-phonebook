@@ -7,7 +7,7 @@ import { Text } from './Home.styled';
 export const Home = () => {
   return (
     <>
-      <Title>Welcome, to your phonebook application!</Title>
+      <Title>Welcome to your phonebook application!</Title>
       <Stack
         direction="row"
         spacing={2}
